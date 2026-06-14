@@ -1,0 +1,16 @@
+services:
+  java-service:
+    image: eclipse-temurin:21-jre
+    container_name: java-service
+    working_dir: /app
+
+    volumes:
+      - /opt/apps/java-service/release/app.jar:/app/app.jar:ro
+      - /opt/docker/config/java-service/application-prod.yml:/app/application-prod.yml:ro
+
+    command: java -Xms128m -Xmx512m -jar /app/app.jar --spring.config.location=file:/app/application-prod.yml
+
+    ports:
+      - "127.0.0.1:8081:8080"
+
+    restart: unless-stopped
