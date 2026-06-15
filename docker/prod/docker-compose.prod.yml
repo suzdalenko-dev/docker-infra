@@ -1,7 +1,7 @@
 services:
   java-service:
     build:
-      context: /var/www/java-service
+      context: /opt/apps/java-service
       dockerfile: Dockerfile
 
     image: java-service:prod
