@@ -1,12 +1,15 @@
+cd /var/www/docker-infra
+    docker compose -f docker/prod/docker-compose.prod.yml up -d --build
 
 
-- :/var/www/docker-infra
-- :/var/www/java-service
+java-service:
+  Dockerfile construye imagen.
 
-- Puerto externo: 18081
-- Puerto interno contenedor: 8080
-- URL local servidor: http://127.0.0.1:18081/api/java/health
-- URL desde red: http://IP_SERVIDOR:18081/api/java/health
+docker-infra:
+  docker/prod/docker-compose.prod.yml levanta contenedor.
 
-
-new changed 1
+Producción:
+  image: java-service:prod
+  container: java-service
+  puerto: 0.0.0.0:8080->8080
+  URL externa: http://IP_SERVIDOR:8080
