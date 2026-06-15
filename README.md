@@ -17,3 +17,20 @@ Producción:
   container: java-service
   puerto: 0.0.0.0:8080->8080
   URL externa: http://IP_SERVIDOR:8080
+
+
+
+La explicación mental importante
+    Ahora en producción tienes esto:
+
+    /opt/apps/java-service
+        código fuente Java
+
+    Dockerfile
+        compila el código y fabrica la imagen
+
+    java-service:prod
+        imagen Docker con el código ya compilado dentro
+
+    java-service
+        contenedor corriendo desde esa imagen
