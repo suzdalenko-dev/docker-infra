@@ -1,5 +1,6 @@
 cd /var/www/docker-infra
---    docker compose -f docker/prod/docker-compose.prod.yml up -d --build
+
+    docker compose -f docker/prod/docker-compose.prod.yml up -d --build
 
 
 java-service:
