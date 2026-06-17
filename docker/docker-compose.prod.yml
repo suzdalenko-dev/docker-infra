@@ -1,0 +1,30 @@
+services:
+  java-service:
+    build:
+      context: /opt/apps/java-service
+      dockerfile: Dockerfile
+    image: java-service:prod
+    container_name: java-service
+    ports:
+      - "8080:8080"
+
+  net-service:
+    build:
+      context: /opt/apps/net-service
+      dockerfile: Dockerfile
+    image: net-service:prod
+    container_name: net-service
+    ports:
+      - "8181:8181"
+
+
+
+# cd /opt/apps/docker-infra
+# docker compose -f docker-compose.prod.yml up -d --build --force-recreate java-service
+
+# cd /opt/apps/docker-infra
+# docker compose -f docker-compose.prod.yml up -d --build --force-recreate net-service
+
+# TODO
+# cd /opt/apps/docker-infra
+# docker compose -f docker-compose.prod.yml up -d --build
