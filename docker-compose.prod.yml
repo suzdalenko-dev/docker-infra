@@ -5,8 +5,9 @@ services:
       dockerfile: Dockerfile
     image: java-service:prod
     container_name: java-service
+    restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "0.0.0.0:8080:8080"
 
   net-service:
     build:
@@ -14,17 +15,19 @@ services:
       dockerfile: Dockerfile
     image: net-service:prod
     container_name: net-service
+    restart: unless-stopped
     ports:
-      - "8181:8181"
+      - "0.0.0.0:8181:8181"
 
 
-
+# Recrear solo Java
 # cd /opt/apps/docker-infra
 # docker compose -f docker-compose.prod.yml up -d --build --force-recreate java-service
 
+# Recrear solo .NET
 # cd /opt/apps/docker-infra
 # docker compose -f docker-compose.prod.yml up -d --build --force-recreate net-service
 
-# TODO
+# Recrear todo
 # cd /opt/apps/docker-infra
-# docker compose -f docker-compose.prod.yml up -d --build
+# docker compose -f docker-compose.prod.yml up -d --build --force-recreate
